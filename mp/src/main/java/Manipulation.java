@@ -27,15 +27,6 @@ public class Manipulation {
                     .withMappingStrategy(strategy)
                     .build();
             List<Employee> employees = csv.parse();
-
-            for (Employee employee : employees) {
-                System.out.println("ID: " + employee.id +
-                        "\n  First Name: " + employee.firstName +
-                        "\n  Last Name: " + employee.lastName +
-                        "\n  Country: " + employee.country +
-                        "\n  Age: " + employee.age);
-                System.out.println();
-            }
             return employees;
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,7 +42,7 @@ public class Manipulation {
         return json;
     }
 
-    public static void writeStringToFile(String json, String filePath) {
+    public static void toJson(String json, String filePath) {
         try (FileWriter fileWriter = new FileWriter(filePath)) {
             fileWriter.write(json);
         } catch (IOException e) {

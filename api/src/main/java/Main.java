@@ -3,7 +3,7 @@ import com.opencsv.CSVWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.List;
 
 
 public class Main {
@@ -11,7 +11,7 @@ public class Main {
         Manipulation manipulation = new Manipulation();
         String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
         String fileName = "data.csv";
-        String json = "data.json";
+        String jsonFileName= "data.json";
         String[] employeeInfo1 = "1,John,Smith,USA,25".split(",");
         String[] employeeInfo2 = "2,Ivan,Petrov,RU,23".split(",");
 
@@ -22,7 +22,9 @@ public class Main {
             e.printStackTrace();
         }
 
-
+        List<Employee> employees = manipulation.parseCSV(fileName, columnMapping);
+        String json = Manipulation.listToJson(employees);
+        Manipulation.toJson(json, jsonFileName);
 
     }
 }
